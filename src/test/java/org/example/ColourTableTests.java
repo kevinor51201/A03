@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ColourTableTests {
@@ -17,6 +18,24 @@ public class ColourTableTests {
     public void colourTableConstructorThrowsOnInvalidInput() {
         assertThrows(IllegalArgumentException.class, () -> {
             new ColourTable(3);
+        });
+    }
+
+    @Test
+    public void addMethodSuccessfullyAddsColoursWhileBelowCapacity() {
+        ColourTable colourTable = new ColourTable(2);
+        colourTable.add(new Colour(252,87,96));
+        colourTable.add(new Colour(253,86,94));
+        assertEquals(2,colourTable.getTableSize());
+    }
+
+    @Test
+    public void addMethodThrowsWhenOverCapacity() {
+        ColourTable colourTable = new ColourTable(2);
+        colourTable.add(new Colour(252,87,96));
+        colourTable.add(new Colour(253,86,94));
+        assertThrows(Error.class, () -> {
+            colourTable.add(new Colour(243, 83, 93));
         });
     }
 }

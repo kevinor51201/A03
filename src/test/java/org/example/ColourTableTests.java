@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ColourTableTests {
     @Test
-    public void constructorDoesNotThrowOnValidInput() {
+    public void colourTableConstructorDoesNotThrowOnValidInput() {
         int[] validSizes = {2,4,8,16,32,64,128,256,512,1024};
         for (int size : validSizes) {
             new ColourTable(size);
@@ -14,7 +14,7 @@ public class ColourTableTests {
     }
 
     @Test
-    public void constructorThrowsOnInvalidInput() {
+    public void colourTableConstructorThrowsOnInvalidInput() {
         assertThrows(IllegalArgumentException.class, () -> {
             new ColourTable(3);
         });
